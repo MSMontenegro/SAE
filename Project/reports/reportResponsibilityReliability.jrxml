@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportResponsibility" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="35" rightMargin="25" topMargin="35" bottomMargin="25" uuid="6653eb33-67d5-45d6-993b-4d2191a80e2e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="9"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Micaela\\Desktop\\Eclipse Marte\\eclipse\\plugins\\UCM2DEVS\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title" class="java.lang.String"/>
+	<field name="responsibilityF" class="java.lang.String"/>
+	<field name="fails" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="-13" width="535" height="48" backcolor="#CCFFFF" uuid="7da7e9a2-e80f-4dbc-8ef7-7bbcd38e11d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="8" width="80" height="20" uuid="52cb00f1-74e7-4843-a131-c342985116f9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="279" splitType="Stretch">
+			<lineChart>
+				<chart isShowLegend="false">
+					<reportElement x="81" y="12" width="374" height="255" uuid="7eaf2b74-8d1e-4fa5-aacc-5b324f5271f1"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Avg. Failures Per Responsibility"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Avg. Failures"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{responsibilityF}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{fails}]]></valueExpression>
+						<labelExpression><![CDATA[$F{responsibilityF} + " - " +$F{fails}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisLabelExpression><![CDATA["Responsability"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Avg. Failures"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</summary>
+</jasperReport>
