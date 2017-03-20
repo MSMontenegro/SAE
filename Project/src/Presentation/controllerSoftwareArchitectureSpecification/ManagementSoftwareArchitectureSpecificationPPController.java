@@ -317,6 +317,23 @@ public class ManagementSoftwareArchitectureSpecificationPPController extends Con
 		}
 	}
 	
+	public String addToTable(String namePath) {
+		String result = this.getManager().chequerUCM(namePath);
+
+		if (result.equals("")) {
+			TableItem item = new TableItem(this.getForm().getTable(), SWT.NONE);
+			item.setData(namePath);
+
+			item.setText(new String[] { namePath, namePath.substring(namePath.lastIndexOf("\\") + 1),
+					namePath.substring(0, namePath.lastIndexOf("\\")), });
+			return "";
+
+		} else {
+			return result;
+		}
+
+	}
+	
 	public void openJUCMNavEditor(Composite parent, String pathUCM) {
 		File file = new File(pathUCM);
 		if (file.exists()) {

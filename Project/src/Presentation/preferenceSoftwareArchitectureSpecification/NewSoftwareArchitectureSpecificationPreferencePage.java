@@ -312,6 +312,7 @@ public class NewSoftwareArchitectureSpecificationPreferencePage extends FieldEdi
 			btnAdd.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					viewController.addToTable(txtPath.getStringValue()+"/"+txtName.getStringValue());
 					parent.setCursor(cursorWait);
 					if (viewController.save()) {
 						parent.setCursor(cursorNotWait);
