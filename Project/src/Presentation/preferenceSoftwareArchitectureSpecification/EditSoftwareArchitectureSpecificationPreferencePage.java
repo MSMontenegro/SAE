@@ -27,10 +27,8 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import DomainModel.AnalysisEntity.QualityRequirement;
 import DomainModel.SoftwareArchitectureSpecificationEntity.Architecture;
 import Presentation.controllerSoftwareArchitectureSpecification.EditSoftwareArchitectureSpecificationPPController;
-import Presentation.controllerSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationPPController;
 import Presentation.preferences.Messages;
 
 /**
@@ -131,7 +129,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 						cmbSystemItemStateChanged();
 						prepareView(1);
 					} else {
-						clearSpecification();
+						// clearSpecification();
 						prepareView(0);
 					}
 				}
@@ -233,7 +231,13 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			labelUnit.setText(Messages.getString("UCM2DEVS_Unit_Label") + ":");
 
 			cmbUnit = new ComboViewer(cSpecification, SWT.READ_ONLY);
+			loadCmbSystem();
 			cmbUnit.setContentProvider(ArrayContentProvider.getInstance());
+
+			gridData = new GridData();
+			gridData.horizontalAlignment = GridData.END;
+			gridData.grabExcessHorizontalSpace = true;
+			gridData.widthHint = 75;
 
 			btnConsult = new Button(cSpecification, SWT.PUSH);
 			btnConsult.setText(Messages.getString("UCM2DEVS_Consult_Buttom"));
@@ -286,7 +290,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 					if (viewController.createDeleteSpecificationDialog() == true) {
 						parent.setCursor(cursorWait);
 						viewController.remove();
-						clearSpecification();
+						// clearSpecification();
 						prepareView(1);
 						fillTable();
 						parent.setCursor(cursorNotWait);
@@ -299,6 +303,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			btnSave.setText(Messages.getString("UCM2DEVS_Save_Buttom"));
 			btnSave.setLayoutData(gridData);
 			btnSave.addSelectionListener(new SelectionAdapter() {
+
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					parent.setCursor(cursorWait);
@@ -552,7 +557,6 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 		case 0:// Search specification
 			this.clearSpecification();
 			this.getCmbSystem().getCombo().setEnabled(true);
-			loadCmbSystem();
 
 			this.getTblViewerSpecificationArchitecture().getTable().setEnabled(false);
 			this.getTxtName().getTextControl(this.getcSpecification()).setEnabled(false);
@@ -564,11 +568,18 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			this.getBtnConsult().setEnabled(false);
 			this.getBtnSave().setEnabled(false);
 
+			clearSpecification();
 			break;
 		case 1:// With system selected
+			int itemCountTable = this.getTable().getItemCount();
 			this.getTblViewerSpecificationArchitecture().getTable().setEnabled(true);
 			this.getTxtName().getTextControl(this.getcSpecification()).setEnabled(false);
 			this.getTxtPath().getTextControl(this.getcSpecification()).setEnabled(false);
+			/*
+			 * if (itemCountTable!=0){
+			 * this.getCmbUnit().getCombo().setEnabled(true); }else{
+			 * this.getCmbUnit().getCombo().setEnabled(false); }
+			 */
 			this.getCmbUnit().getCombo().setEnabled(false);
 
 			this.getBtnUpdate().setEnabled(false);
@@ -576,14 +587,16 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			this.getBtnConsult().setEnabled(false);
 			this.getBtnSave().setEnabled(false);
 
+			clearSpecification();
+
 			break;
 		case 2:// With selected specification
-			this.getCmbUnit().getCombo().setEnabled(false);
+			this.getCmbUnit().getCombo().setEnabled(true);
 
 			this.getBtnUpdate().setEnabled(true);
 			this.getBtnDelete().setEnabled(true);
 			this.getBtnConsult().setEnabled(true);
-			this.getBtnSave().setEnabled(false);
+			this.getBtnSave().setEnabled(true);
 
 			break;
 		case 3:// No saved system

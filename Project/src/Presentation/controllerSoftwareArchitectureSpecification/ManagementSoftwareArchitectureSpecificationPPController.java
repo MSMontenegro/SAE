@@ -219,7 +219,6 @@ public class ManagementSoftwareArchitectureSpecificationPPController extends Con
 		if (result.equals("")) {
 			this.getForm().getTxtName().setStringValue(namePath.substring(namePath.lastIndexOf("\\") + 1));
 			this.getForm().getTxtPath().setStringValue(namePath.substring(0, namePath.lastIndexOf("\\")));
-			this.getForm().loadCmbUnit();
 			return "";
 
 		} else {

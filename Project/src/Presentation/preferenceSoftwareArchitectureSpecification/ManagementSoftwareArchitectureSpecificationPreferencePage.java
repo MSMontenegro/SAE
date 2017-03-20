@@ -225,10 +225,27 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 			Label labelUnit = new Label(cSpecification, SWT.NONE);
 			labelUnit.setText(Messages.getString("UCM2DEVS_Unit_Label") + ":");
 
+			gridData = new GridData();
+			gridData.widthHint = 200;
+			gridData.grabExcessHorizontalSpace = true;
+			
+			//TODO como carga combo? preguntar Mica
 			cmbUnit = new ComboViewer(cSpecification, SWT.READ_ONLY);
 			cmbUnit.setContentProvider(ArrayContentProvider.getInstance());
+			cmbUnit.getCombo().setLayoutData(gridData);
+			loadCmbUnit();
+			cmbUnit.getCombo().addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if (((IStructuredSelection) cmbUnit.getSelection()).getFirstElement() != null) {
+						viewController.setModelUnit(cmbUnit);
+						prepareView(5);
+					}
+				}
+			});
 
-			btnConsult = new Button(cSpecification, SWT.PUSH);
+
+			/*btnConsult = new Button(cSpecification, SWT.PUSH);
 			btnConsult.setText(Messages.getString("UCM2DEVS_Consult_Buttom"));
 			btnConsult.setToolTipText(Messages.getString("UCM2DEVS_Consult_ToolTip"));
 			btnConsult.setLayoutData(gridData);
@@ -240,8 +257,13 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 					viewController.openJUCMNavEditor(parent, item.getText(2) + "\\" + item.getText(1));
 					parent.setCursor(cursorNotWait);
 				}
-			});
+			});*/
 
+			gridData = new GridData();
+			gridData.horizontalAlignment = GridData.END;
+			gridData.grabExcessHorizontalSpace = true;
+			gridData.widthHint = 75;
+			
 			btnBrowse = new Button(cSpecification, SWT.PUSH);
 			btnBrowse.setText(Messages.getString("UCM2DEVS_Browse_Buttom"));
 			btnBrowse.setLayoutData(gridData);
@@ -528,6 +550,7 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 			this.getViewController().createErrorDialog(Messages.getString("UCM2DEVS_NoSavedSystems_ErrorDialog"));
 			pabm = 3;
 		}
+		Object valueCmbUnit = ((IStructuredSelection) cmbUnit.getSelection()).getFirstElement();
 		switch (pabm) {
 		case 0:// Search specification
 			this.clearSpecification();
@@ -541,7 +564,7 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 
 			this.getBtnBrowse().setEnabled(false);
 			this.getBtnAdd().setEnabled(false);
-			this.getBtnConsult().setEnabled(false);
+			//this.getBtnConsult().setEnabled(false);
 
 			break;
 		case 1:// With system selected
@@ -551,8 +574,13 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 			this.getCmbUnit().getCombo().setEnabled(false);
 
 			this.getBtnBrowse().setEnabled(true);
-			this.getBtnAdd().setEnabled(true);
-			this.getBtnConsult().setEnabled(false);
+			if (!(valueCmbUnit == null)) {
+				this.getBtnAdd().setEnabled(true);
+			} else {
+				this.getBtnAdd().setEnabled(false);
+			}
+			//this.getBtnAdd().setEnabled(true);
+			//this.getBtnConsult().setEnabled(false);
 
 			break;
 		case 2:// With browse specification
@@ -568,8 +596,14 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 			this.getTxtPath().getTextControl(this.getcSpecification()).setEnabled(false);
 			this.getCmbUnit().getCombo().setEnabled(false);
 			this.getBtnBrowse().setEnabled(false);
-			this.getBtnAdd().setEnabled(false);
-			this.getBtnConsult().setEnabled(false);
+			this.getBtnBrowse().setEnabled(true);
+			if (!(valueCmbUnit == null)) {
+				this.getBtnAdd().setEnabled(true);
+			} else {
+				this.getBtnAdd().setEnabled(false);
+			}
+			//this.getBtnAdd().setEnabled(false);
+			//this.getBtnConsult().setEnabled(false);
 
 			break;
 		case 4:// with specification selected
@@ -580,10 +614,21 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 			this.getTxtPath().getTextControl(this.getcSpecification()).setEnabled(false);
 			this.getCmbUnit().getCombo().setEnabled(false);
 			this.getBtnBrowse().setEnabled(true);
-			this.getBtnAdd().setEnabled(true);
-			this.getBtnConsult().setEnabled(true);
+			if (!(valueCmbUnit == null)) {
+				this.getBtnAdd().setEnabled(true);
+			} else {
+				this.getBtnAdd().setEnabled(false);
+			}
+			//this.getBtnAdd().setEnabled(true);
+			//this.getBtnConsult().setEnabled(true);
 
 			break;
+		case 5: //after button browser
+			if (!(valueCmbUnit == null)) {
+				this.getBtnAdd().setEnabled(true);
+			} else {
+				this.getBtnAdd().setEnabled(false);
+			}
 		}
 	}
 
