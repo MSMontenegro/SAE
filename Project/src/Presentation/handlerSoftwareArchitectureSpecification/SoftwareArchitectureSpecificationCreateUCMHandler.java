@@ -12,12 +12,12 @@ import org.eclipse.ui.PlatformUI;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SoftwareArchitectureSpecificationNewHandler extends AbstractHandler {
+public class SoftwareArchitectureSpecificationCreateUCMHandler extends AbstractHandler {
 
 	/**
 	 * The constructor.
 	 */
-	public SoftwareArchitectureSpecificationNewHandler() {
+	public SoftwareArchitectureSpecificationCreateUCMHandler() {
 
 	}
 

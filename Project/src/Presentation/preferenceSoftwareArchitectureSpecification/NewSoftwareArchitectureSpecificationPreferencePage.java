@@ -35,7 +35,7 @@ import Presentation.preferences.Messages;
  * 
  * @author: Micaela Montenegro. E-mail: mica.montenegro.sistemas@gmail.com
  */
-public class ManagementSoftwareArchitectureSpecificationPreferencePage extends FieldEditorPreferencePage
+public class NewSoftwareArchitectureSpecificationPreferencePage extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage {
 	/**
 	 * Attributes
@@ -62,7 +62,7 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 	/**
 	 * Constructor
 	 */
-	public ManagementSoftwareArchitectureSpecificationPreferencePage() {
+	public NewSoftwareArchitectureSpecificationPreferencePage() {
 		super(GRID);
 		try {
 			noDefaultAndApplyButton();
@@ -259,12 +259,19 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 				}
 			});*/
 
+			Composite cButtoms = new Composite(gSpecificationArchitecture, SWT.RIGHT);
+			cButtoms.setLayout(layout);
+			gridData = new GridData();
+			gridData.horizontalSpan = 4;
+			gridData.horizontalAlignment = GridData.END;
+			cButtoms.setLayoutData(gridData);
+			
 			gridData = new GridData();
 			gridData.horizontalAlignment = GridData.END;
 			gridData.grabExcessHorizontalSpace = true;
 			gridData.widthHint = 75;
 			
-			btnBrowse = new Button(cSpecification, SWT.PUSH);
+			btnBrowse = new Button(cButtoms, SWT.PUSH);
 			btnBrowse.setText(Messages.getString("UCM2DEVS_Browse_Buttom"));
 			btnBrowse.setLayoutData(gridData);
 			btnBrowse.addSelectionListener(new SelectionAdapter() {
@@ -299,7 +306,7 @@ public class ManagementSoftwareArchitectureSpecificationPreferencePage extends F
 				}
 			});
 
-			btnAdd = new Button(cSpecification, SWT.PUSH);
+			btnAdd = new Button(cButtoms, SWT.PUSH);
 			btnAdd.setText(Messages.getString("UCM2DEVS_Add_Buttom"));
 			btnAdd.setLayoutData(gridData);
 			btnAdd.addSelectionListener(new SelectionAdapter() {

@@ -12,12 +12,12 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SoftwareArchitectureSpecificationManagementHandler extends AbstractHandler {
+public class SoftwareArchitectureSpecificationNewtHandler extends AbstractHandler {
 
 	/**
 	 * The constructor.
 	 */
-	public SoftwareArchitectureSpecificationManagementHandler() {
+	public SoftwareArchitectureSpecificationNewtHandler() {
 
 	}
 
@@ -29,10 +29,10 @@ public class SoftwareArchitectureSpecificationManagementHandler extends Abstract
 		PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				//"Presentation.preferenceSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationManagementPreferencePage",
-				"Presentation.preferenceSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationPreferencePage",
+				"Presentation.preferenceSoftwareArchitectureSpecification.NewSoftwareArchitectureSpecificationPreferencePage",
 				new String[] {
 						//"Presentation.preferenceSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationManagementPreferencePage" },
-						"Presentation.preferenceSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationManagementPreferencePage" },
+						"Presentation.preferenceSoftwareArchitectureSpecification.NewSoftwareArchitectureSpecificationManagementPreferencePage" },
 				null);
 		if (pref != null)
 			pref.open();

@@ -230,16 +230,39 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			Label labelUnit = new Label(cSpecification, SWT.NONE);
 			labelUnit.setText(Messages.getString("UCM2DEVS_Unit_Label") + ":");
 
+			gridData = new GridData();
+			gridData.widthHint = 200;
+			gridData.grabExcessHorizontalSpace = true;
+			
+			//TODO como carga combo? preguntar Mica
 			cmbUnit = new ComboViewer(cSpecification, SWT.READ_ONLY);
-			loadCmbSystem();
 			cmbUnit.setContentProvider(ArrayContentProvider.getInstance());
+			cmbUnit.getCombo().setLayoutData(gridData);
+			loadCmbUnit();
+			cmbUnit.getCombo().addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if (((IStructuredSelection) cmbUnit.getSelection()).getFirstElement() != null) {
+						viewController.setModelUnit(cmbUnit);
+						prepareView(5);
+					}
+				}
+			});
+
+
+			Composite cButtoms = new Composite(gSpecificationArchitecture, SWT.RIGHT);
+			cButtoms.setLayout(layout);
+			gridData = new GridData();
+			gridData.horizontalSpan = 4;
+			gridData.horizontalAlignment = GridData.END;
+			cButtoms.setLayoutData(gridData);
 
 			gridData = new GridData();
 			gridData.horizontalAlignment = GridData.END;
 			gridData.grabExcessHorizontalSpace = true;
 			gridData.widthHint = 75;
 
-			btnConsult = new Button(cSpecification, SWT.PUSH);
+			btnConsult = new Button(cButtoms, SWT.PUSH);
 			btnConsult.setText(Messages.getString("UCM2DEVS_Consult_Buttom"));
 			btnConsult.setToolTipText(Messages.getString("UCM2DEVS_Consult_ToolTip"));
 			btnConsult.setLayoutData(gridData);
@@ -253,7 +276,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 				}
 			});
 
-			btnUpdate = new Button(cSpecification, SWT.PUSH);
+			btnUpdate = new Button(cButtoms, SWT.PUSH);
 			btnUpdate.setText(Messages.getString("UCM2DEVS_Update_Buttom"));
 			btnUpdate.setLayoutData(gridData);
 			btnUpdate.addSelectionListener(new SelectionAdapter() {
@@ -280,7 +303,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 				}
 			});
 
-			btnDelete = new Button(cSpecification, SWT.PUSH);
+			btnDelete = new Button(cButtoms, SWT.PUSH);
 			btnDelete.setText(Messages.getString("UCM2DEVS_Delete_Buttom"));
 			btnDelete.setLayoutData(gridData);
 			btnDelete.addSelectionListener(new SelectionAdapter() {
@@ -299,7 +322,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 				}
 			});
 
-			btnSave = new Button(cSpecification, SWT.PUSH);
+			btnSave = new Button(cButtoms, SWT.PUSH);
 			btnSave.setText(Messages.getString("UCM2DEVS_Save_Buttom"));
 			btnSave.setLayoutData(gridData);
 			btnSave.addSelectionListener(new SelectionAdapter() {

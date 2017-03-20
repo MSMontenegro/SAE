@@ -23,7 +23,7 @@ import DomainModel.SoftwareArchitectureSpecificationEntity.PathElement;
 import DomainModel.SoftwareArchitectureSpecificationEntity.Responsibility;
 import DomainModel.SoftwareArchitectureSpecificationEntity.SpecificationParameter;
 import Presentation.Controller;
-import Presentation.preferenceSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationPreferencePage;
+import Presentation.preferenceSoftwareArchitectureSpecification.NewSoftwareArchitectureSpecificationPreferencePage;
 import Presentation.preferences.Messages;
 
 /**
@@ -37,7 +37,7 @@ public class ManagementSoftwareArchitectureSpecificationPPController extends Con
 	 * Attributes
 	 */
 	private SoftwareArchitectureSpecificationManager manager;
-	private ManagementSoftwareArchitectureSpecificationPreferencePage form;
+	private NewSoftwareArchitectureSpecificationPreferencePage form;
 	private static ManagementSoftwareArchitectureSpecificationPPController viewController;
 
 	private ManagementSoftwareArchitectureSpecificationPPController() {
@@ -69,11 +69,11 @@ public class ManagementSoftwareArchitectureSpecificationPPController extends Con
 		this.manager = manager;
 	}
 
-	public ManagementSoftwareArchitectureSpecificationPreferencePage getForm() {
+	public NewSoftwareArchitectureSpecificationPreferencePage getForm() {
 		return form;
 	}
 
-	public void setForm(ManagementSoftwareArchitectureSpecificationPreferencePage form) {
+	public void setForm(NewSoftwareArchitectureSpecificationPreferencePage form) {
 		this.form = form;
 	}
 

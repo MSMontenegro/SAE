@@ -35,8 +35,8 @@
       </command>
       <command
             categoryId="Project.commands.category"
-            id="Project.commands.softwareArchitectureSpecificationManagementCommand"
-            name="SoftwareArchitectureSpecificationManagement">
+            id="Project.commands.softwareArchitectureSpecificationNewCommand"
+            name="SoftwareArchitectureSpecificationNew">
       </command>
       <command
             categoryId="Project.commands.category"
@@ -45,8 +45,8 @@
       </command>
       <command
             categoryId="Project.commands.category"
-            id="Project.commands.softwareArchitectureSpecificationNewCommand"
-            name="SoftwareArchitectureSpecificationNew">
+            id="Project.commands.softwareArchitectureSpecificationCreateUCMCommand"
+            name="SoftwareArchitectureSpecificationCreateUCM">
       </command>
       <command
             categoryId="Project.commands.category"
@@ -98,16 +98,16 @@
             commandId="Project.commands.softwareArchitectureSpecificationOpenCommand">
       </handler>
       <handler
-            class="Presentation.handlerSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationManagementHandler"
-            commandId="Project.commands.softwareArchitectureSpecificationManagementCommand">
+            class="Presentation.handlerSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationNewtHandler"
+            commandId="Project.commands.softwareArchitectureSpecificationNewCommand">
       </handler>
       <handler
             class="Presentation.handlerSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationEditHandler"
             commandId="Project.commands.softwareArchitectureSpecificationEditCommand">
       </handler>
       <handler
-            class="Presentation.handlerSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationNewHandler"
-            commandId="Project.commands.softwareArchitectureSpecificationNewCommand">
+            class="Presentation.handlerSoftwareArchitectureSpecification.SoftwareArchitectureSpecificationCreateUCMHandler"
+            commandId="Project.commands.softwareArchitectureSpecificationCreateUCMCommand">
       </handler>
       <handler
             class="Presentation.handlerSoftwareArchitectureEvaluation.SoftwareArchitectureEvaluationHandler"
@@ -187,9 +187,9 @@
      	    <menu
             	   label="%SoftwareArchitectureSpecification">
            			<command
-              		    commandId="Project.commands.softwareArchitectureSpecificationNewCommand"
-                	    id="Project.menus.softwareArchitectureSpecificationNewCommand"
-                  		label="%New"
+              		    commandId="Project.commands.softwareArchitectureSpecificationCreateUCMCommand"
+                	    id="Project.menus.softwareArchitectureSpecificationCreateUCMCommand"
+                  		label="%CreateUCM"
                   		mnemonic="N"
                  		style="push">
            			</command>
@@ -201,9 +201,9 @@
                     style="push">
               </command>
          		    <command
-                  	 	commandId="Project.commands.softwareArchitectureSpecificationManagementCommand"
-                  		id="Project.menus.softwareArchitectureSpecificationManagementCommand"
-                  		label="%Management"
+                  	 	commandId="Project.commands.softwareArchitectureSpecificationNewCommand"
+                  		id="Project.menus.softwareArchitectureSpecificationNewCommand"
+                  		label="%New"
                   		mnemonic="SASM"
           	  	        style="push">
         		    </command>
@@ -249,49 +249,49 @@
             category="Presentation.preferences.SAE"
             class="Presentation.preferenceConfiguration.DatabaseConfigurationPreferencePage"
             id="Presentation.preferenceConfiguration.DatabaseConfigurationPreferencePage"
-            name="Database Configuration">
+            name="%DatabaseConfiguration">
       </page>
       <page
             category="Presentation.preferences.SAE"
             class="Presentation.preferenceAnalysis.NewSystemPreferencePage"
             id="Presentation.preferenceAnalysis.NewSystemPreferencePage"
-            name="New System">
+            name="%NewSystem">
       </page>
       <page
             category="Presentation.preferences.SAE"
             class="Presentation.preferenceAnalysis.EditSystemPreferencePage"
             id="Presentation.preferenceAnalysis.EditSystemPreferencePage"
-            name="Edit System">
+            name="%EditSystem">
       </page>
 	  <page
       		category="Presentation.preferences.SAE"
        		class="Presentation.preferenceAnalysis.NewQualityRequirementPreferencePage"
        		id="Presentation.preferenceAnalysis.NewQualityRequirementPreferencePage"
-       		name="New Quality Requirement">
+       		name="%NewQualityRequirement">
 	  </page>
 	  <page
        		category="Presentation.preferences.SAE"
        		class="Presentation.preferenceAnalysis.EditQualityRequirementPreferencePage"
        		id="Presentation.preferenceAnalysis.EditQualityRequirementPreferencePage"
-       		name="Edit Quality Requirement">
+       		name="%EditQualityRequirement">
 	 </page>	
   <page
         category="Presentation.preferences.SAE"
-        class="Presentation.preferenceSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationPreferencePage"
-        id="Presentation.preferenceSoftwareArchitectureSpecification.ManagementSoftwareArchitectureSpecificationPreferencePage"
-        name="Specification Management">
+        class="Presentation.preferenceSoftwareArchitectureSpecification.NewSoftwareArchitectureSpecificationPreferencePage"
+        id="Presentation.preferenceSoftwareArchitectureSpecification.NewSoftwareArchitectureSpecificationPreferencePage"
+        name="%NewArchitectureSpecification">
   </page>
   <page
         category="Presentation.preferences.SAE"
         class="Presentation.preferenceSoftwareArchitectureSpecification.EditSoftwareArchitectureSpecificationPreferencePage"
         id="Presentation.preferenceSoftwareArchitectureSpecification.EditSoftwareArchitectureSpecificationPreferencePage"
-        name="Specification Edit">
+        name="%EditArchitectureSpecification">
   </page>
   <page
         category="Presentation.preferences.SAE"
         class="Presentation.preferenceSoftwareArchitectureEvaluation.SoftwareArchitectureEvaluationPreferencePage"
         id="Presentation.preferenceSoftwareArchitectureEvaluation.SoftwareArchitectureEvaluationPreferencePage"
-        name="Evaluation">
+        name="%Evaluation">
   </page>
   <page
         category="Presentation.preferences.SAE"
