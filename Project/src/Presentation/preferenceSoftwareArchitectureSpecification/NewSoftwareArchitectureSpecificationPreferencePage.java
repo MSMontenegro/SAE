@@ -117,6 +117,7 @@ public class NewSoftwareArchitectureSpecificationPreferencePage extends FieldEdi
 
 			cmbSystem = new ComboViewer(cSystemName, SWT.READ_ONLY);
 			cmbSystem.setContentProvider(ArrayContentProvider.getInstance());
+			loadCmbSystem();
 			cmbSystem.getCombo().addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -563,7 +564,7 @@ public class NewSoftwareArchitectureSpecificationPreferencePage extends FieldEdi
 		case 0:// Search specification
 			this.clearSpecification();
 			this.getCmbSystem().getCombo().setEnabled(true);
-			loadCmbSystem();
+
 
 			this.getTblViewerSpecificationArchitecture().getTable().setEnabled(false);
 			this.getTxtName().getTextControl(this.getcSpecification()).setEnabled(false);

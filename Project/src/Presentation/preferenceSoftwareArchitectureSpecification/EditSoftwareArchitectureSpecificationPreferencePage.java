@@ -119,6 +119,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 
 			cmbSystem = new ComboViewer(cSystemName, SWT.READ_ONLY);
 			cmbSystem.setContentProvider(ArrayContentProvider.getInstance());
+			loadCmbSystem();
 			cmbSystem.getCombo().addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -208,6 +209,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					table.showSelection();
+					//TODO que no llame directamente al manager
 					viewController.getManager()
 							.setArchitecture((Architecture) table.getItem(table.getSelectionIndex()).getData());
 					setView();
@@ -282,12 +284,20 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 			btnUpdate.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					parent.setCursor(cursorWait);
+					if (viewController.updateArchitecture()) {
+						parent.setCursor(cursorNotWait);
+						viewController.createObjectSuccessDialog();
+					} else {
+						parent.setCursor(cursorNotWait);
+						viewController.createObjectDontUpdateErrorDialog();
+					}
 					// Open a FileDialog that show only jucm file
-					chooseFile = new FileDialog(parent.getShell(), SWT.OPEN);
+					/*chooseFile = new FileDialog(parent.getShell(), SWT.OPEN);
 					chooseFile.setFilterNames(new String[] { Messages.getString("UCM2DEVS_JucmFiles_Label") });
 					chooseFile.setFilterExtensions(new String[] { "*.jucm" });
-					String filePath = chooseFile.open();
-					if (filePath != null) {
+					String filePath = chooseFile.open();*/
+					/*if (filePath != null) {
 						if (!viewController.isUCMDuplicate(filePath)) {
 							String result = viewController.addToCmb(filePath);
 							if (!result.equals("")) {
@@ -299,7 +309,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 						} else {
 							viewController.createErrorDialog(Messages.getString("UCM2DEVS_UCMExists_ErrorDialog"));
 						}
-					}
+					}*/
 				}
 			});
 
@@ -330,7 +340,7 @@ public class EditSoftwareArchitectureSpecificationPreferencePage extends FieldEd
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					parent.setCursor(cursorWait);
-					if (viewController.save()) {
+					if (viewController.updateUnitArchitecture()) {
 						parent.setCursor(cursorNotWait);
 						viewController.createObjectSuccessDialog();
 					} else {

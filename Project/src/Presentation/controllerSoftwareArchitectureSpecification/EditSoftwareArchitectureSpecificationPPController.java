@@ -244,9 +244,9 @@ public class EditSoftwareArchitectureSpecificationPPController extends Controlle
 	}
 
 	/**
-	 * Update the system with the UCM path and prepare the view
+	 * Update the system with architecture
 	 */
-	public Boolean save() {
+	public Boolean updateArchitecture() {
 		int err;
 		err = this.setSystem();
 		if (err == 0) {
@@ -256,6 +256,18 @@ public class EditSoftwareArchitectureSpecificationPPController extends Controlle
 			return this.getManager().updateSystem();
 		}
 		return null;
+	}
+	
+	/**
+	 * Update the system with the unit
+	 */
+	public Boolean updateUnitArchitecture() {
+		Architecture currentArchitecture = this.getManager().getArchitecture();
+		updateUnitsToArchitecture(currentArchitecture);
+		this.getForm().clearSpecification();
+		this.getForm().fillTable();
+		this.getForm().prepareView(1);
+		return this.getManager().updateSystem();
 	}
 
 	/**
@@ -300,7 +312,10 @@ public class EditSoftwareArchitectureSpecificationPPController extends Controlle
 		}
 
 	}
+	
+	
 
+	//TODO ver que actualize solo uno
 	/**
 	 * update specification parameter´s unit for existing architecture
 	 * 
