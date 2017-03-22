@@ -35,7 +35,7 @@ public class Simulator implements Comparable{
 	@OneToMany(targetEntity = Run.class, cascade = CascadeType.ALL)
 	private Set<Run> runs = new HashSet<Run>();
 	
-	@ManyToMany(targetEntity = QualityRequirement.class, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = QualityRequirement.class)
 	private Set<QualityRequirement> requirements = new HashSet<QualityRequirement>();
 	
 	public Simulator(Unit unit) {

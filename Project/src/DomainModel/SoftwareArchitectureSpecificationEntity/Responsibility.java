@@ -3,6 +3,7 @@ package DomainModel.SoftwareArchitectureSpecificationEntity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +21,7 @@ public class Responsibility extends PathElement {
 	
 	private String idUCM;
 	
-	@OneToMany(targetEntity = SpecificationParameter.class)
+	@OneToMany(targetEntity = SpecificationParameter.class, cascade = CascadeType.REMOVE)
 	private Set<SpecificationParameter> specificationParameter = new HashSet<SpecificationParameter>();
 	
 	public Responsibility(String name) {

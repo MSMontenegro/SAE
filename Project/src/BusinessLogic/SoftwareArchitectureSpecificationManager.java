@@ -781,19 +781,18 @@ public class SoftwareArchitectureSpecificationManager extends HibernateManager i
 	
 	public Boolean deleteArchitecture() {
 		return this.deleteObject(this.getArchitecture());
-		//return this.updateSystem();
 	}
 
 	public Boolean removeArchitecture() {
-		this.deleteAsociation();
-		this.updateSystem();
-		return this.deleteArchitecture();
+		this.deleteAsociationSystArch();
+			this.updateSystem();
+			return this.deleteArchitecture();
 	}
 	
 	/**
 	 * Delete to current system, association with selected architecture
 	 */
-	private void deleteAsociation() {
+	private void deleteAsociationSystArch() {
 		Iterator it = this.getArchitectures().iterator();
 		while (it.hasNext()) {
 			Architecture arc = (Architecture) it.next();
@@ -805,4 +804,5 @@ public class SoftwareArchitectureSpecificationManager extends HibernateManager i
 
 		}
 	}
+	
 }

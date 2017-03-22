@@ -3,6 +3,7 @@ package DomainModel.SoftwareArchitectureSpecificationEntity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Path {
 	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
 	private int id;
 
-	@OneToMany(targetEntity = PathElement.class)
+	@OneToMany(targetEntity = PathElement.class, cascade = CascadeType.REMOVE)
 	private Set<PathElement> pathElements = new HashSet<PathElement>();
 
 	public Set<PathElement> getPathElements() {

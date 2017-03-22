@@ -21,7 +21,7 @@ public class ResponsabilityIndicator extends IndicatorType {
 		super(pname);
 	}
 
-	@ManyToOne(targetEntity = Responsibility.class, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Responsibility.class)
 	private Responsibility responsibility;
 
 	public ResponsabilityIndicator() {

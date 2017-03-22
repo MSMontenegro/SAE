@@ -28,7 +28,7 @@ public class Architecture {
 	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
 	protected int id;
 
-	@OneToMany(targetEntity = Path.class)
+	@OneToMany(targetEntity = Path.class, cascade = CascadeType.REMOVE)
 	private Set<Path> paths = new HashSet<Path>();
 
 	@OneToMany(targetEntity = ArchitectureElement.class, cascade = CascadeType.REMOVE)

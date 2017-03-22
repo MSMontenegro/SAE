@@ -1,5 +1,6 @@
 package DomainModel.SoftwareArchitectureEvaluationEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Indicator implements Comparable {
 
 	private Double value;
 
-	@ManyToOne(targetEntity = IndicatorType.class)
+	@ManyToOne(targetEntity = IndicatorType.class, cascade = CascadeType.REMOVE)
 	private IndicatorType type;
 
 	@ManyToOne(targetEntity = Metric.class)
