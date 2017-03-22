@@ -53,8 +53,8 @@ public class Data {
 		manager.saveObject(unit5);
 		Unit unit6 = new Unit("Weeks");
 		manager.saveObject(unit6);
-		//Unit unit7 = new Unit("Months");
-		//manager.saveObject(unit7);
+		Unit unit7 = new Unit("Months");
+		manager.saveObject(unit7);
 		Unit unit8 = new Unit("Request/Hour");
 		manager.saveObject(unit8);
 		Unit unit9 = new Unit("Request/Day");
@@ -71,7 +71,7 @@ public class Data {
 		units.add(unit4);
 		units.add(unit5);
 		units.add(unit6);
-		//units.add(unit7);
+		units.add(unit7);
 		
 		Set<Unit> unitsThroughput = new HashSet<Unit>();
 		unitsThroughput.add(unit8);

@@ -402,7 +402,7 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 				} else if (punit.getName().equals("Weeks")) {
 					pvalueConvert = pvalue * 10080;
 				} else if (punit.getName().equals("Months")) {
-					pvalueConvert = pvalue * 40320;
+					pvalueConvert = pvalue * 43200;
 				}
 			} else if (this.getUnitIndicator().getName().equals("Seconds")) {
 				if (punit.getName().equals("Minutes")) {
@@ -416,7 +416,7 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 				} else if (punit.getName().equals("Weeks")) {
 					pvalueConvert = pvalue * 604800;
 				} else if (punit.getName().equals("Months")) {
-					pvalueConvert = pvalue * 40320 * 60;
+					pvalueConvert = pvalue * 43200 * 60;
 				}
 			} else if (this.getUnitIndicator().getName().equals("Hours")) {
 				if (punit.getName().equals("Minutes")) {
@@ -430,7 +430,7 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 				} else if (punit.getName().equals("Weeks")) {
 					pvalueConvert = pvalue * 168;
 				} else if (punit.getName().equals("Months")) {
-					pvalueConvert = pvalue * 672;
+					pvalueConvert = pvalue * 720;
 				}
 			} else if (this.getUnitIndicator().getName().equals("Milliseconds")) {
 				if (punit.getName().equals("Minutes")) {
@@ -445,7 +445,7 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 					pvalueConvert = pvalue * 604800000;
 				} else if (punit.getName().equals("Months")) {
 					BigDecimal mil1 = new BigDecimal(pvalue);
-					BigDecimal mil2 = new BigDecimal("2419200000");
+					BigDecimal mil2 = new BigDecimal("2592000000");
 					pvalueConvert = (mil1.multiply(mil2)).doubleValue();
 				}
 			} else if (this.getUnitIndicator().getName().equals("Days")) {
@@ -460,7 +460,7 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 				} else if (punit.getName().equals("Weeks")) {
 					pvalueConvert = pvalue * 7;
 				} else if (punit.getName().equals("Months")) {
-					pvalueConvert = pvalue * 28;
+					pvalueConvert = pvalue * 30;
 				}
 			} else if (this.getUnitIndicator().getName().equals("Weeks")) {
 				if (punit.getName().equals("Seconds")) {
@@ -474,23 +474,23 @@ public class SoftwareArchitectureEvaluationManager extends HibernateManager {
 				} else if (punit.getName().equals("Minutes")) {
 					pvalueConvert = pvalue / 10080;
 				} else if (punit.getName().equals("Months")) {
-					pvalueConvert = pvalue * 4;
+					pvalueConvert = pvalue * (30/7);
 				}
 			} else if (this.getUnitIndicator().getName().equals("Months")) {
 				if (punit.getName().equals("Seconds")) {
-					pvalueConvert = pvalue / 2419200;
+					pvalueConvert = pvalue / 2592000;
 				} else if (punit.getName().equals("Hours")) {
-					pvalueConvert = pvalue * 672;
+					pvalueConvert = pvalue * 720;
 				} else if (punit.getName().equals("Milliseconds")) {
 					BigDecimal num1 = new BigDecimal(pvalue);
-					BigDecimal num2 = new BigDecimal("2419200000");
+					BigDecimal num2 = new BigDecimal("2592000000");
 					pvalueConvert = (num1.divide(num2)).doubleValue();
 				} else if (punit.getName().equals("Days")) {
-					pvalueConvert = pvalue / 28;
+					pvalueConvert = pvalue / 30;
 				} else if (punit.getName().equals("Weeks")) {
-					pvalueConvert = pvalue / 4;
+					pvalueConvert = pvalue / (30/7);
 				} else if (punit.getName().equals("Minutes")) {
-					pvalueConvert = pvalue * 40320;
+					pvalueConvert = pvalue * 43200;
 				}
 			}
 		}
